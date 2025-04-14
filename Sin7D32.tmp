@@ -1,0 +1,262 @@
+[gd_scene load_steps=15 format=3 uid="uid://cyg3jgtgkjr8t"]
+
+[ext_resource type="Script" path="res://UIHandlers/CameraController.gd" id="1_6bdfq"]
+[ext_resource type="Script" path="res://SingleQubitScripts/QubitDragRotation.gd" id="1_7pxk7"]
+[ext_resource type="Material" uid="uid://d2l8a26xoi2la" path="res://Materials/Standard_Unshaded_Yellow.tres" id="1_vgadw"]
+[ext_resource type="Script" path="res://UIHandlers/DraggableQuantumGate.gd" id="2_ds8xk"]
+[ext_resource type="Script" path="res://SingleQubitScripts/HandleArrowRotation.gd" id="3_mxj6e"]
+[ext_resource type="Script" path="res://UIHandlers/HandleNoOfSlots.gd" id="5_508gu"]
+[ext_resource type="PackedScene" uid="uid://ckn0n26pban0e" path="res://ChildScenes/QuantumGateSlot.tscn" id="6_hnefa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sf22p"]
+shading_mode = 0
+albedo_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_70rin"]
+flip_faces = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1q2lb"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_24ux0"]
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k0wna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiat6"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_om30w"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Node"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 1, 2)
+script = ExtResource("1_6bdfq")
+
+[node name="SingleQubit" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("1_7pxk7")
+
+[node name="OuterSphere" type="MeshInstance3D" parent="SingleQubit"]
+material_override = SubResource("StandardMaterial3D_sf22p")
+mesh = SubResource("SphereMesh_70rin")
+
+[node name="ArrowRotation" type="Node3D" parent="SingleQubit/OuterSphere"]
+script = ExtResource("3_mxj6e")
+
+[node name="ArrowBody" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_1q2lb")
+
+[node name="ArrowTip" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450245, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_24ux0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SingleQubit"]
+shape = SubResource("SphereShape3D_k0wna")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Timeline" type="Panel" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="Button" parent="UserInterface/Timeline"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -31.0
+offset_right = 61.0
+text = "Play"
+
+[node name="TimelineSlotsContainer" type="HBoxContainer" parent="UserInterface/Timeline"]
+custom_minimum_size = Vector2(50, 50)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 30.925
+offset_top = -25.0
+offset_right = 458.925
+offset_bottom = 25.0
+grow_vertical = 2
+script = ExtResource("5_508gu")
+
+[node name="GateSlot" parent="UserInterface/Timeline/TimelineSlotsContainer" instance=ExtResource("6_hnefa")]
+layout_mode = 2
+
+[node name="QuantumGatesMenu" type="ScrollContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_bottom = -83.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eiat6")
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UserInterface/QuantumGatesMenu"]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 2
+layout_mode = 2
+alignment = 1
+
+[node name="X_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0.207843, 1, 1, 1)
+script = ExtResource("2_ds8xk")
+z_rot = 180.0
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/X_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="Y_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 0.156863, 1, 1)
+script = ExtResource("2_ds8xk")
+x_rot = 180.0
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/Y_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="Z_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 0.223529, 1)
+script = ExtResource("2_ds8xk")
+y_rot = 180.0
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/Z_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Z_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="H_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/H_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "H_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="S_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/S_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "S_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="T_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/T_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "T_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[connection signal="mouse_entered" from="SingleQubit" to="SingleQubit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SingleQubit" to="SingleQubit" method="_on_mouse_exited"]
+[connection signal="button_down" from="UserInterface/Timeline/PlayButton" to="SingleQubit/OuterSphere/ArrowRotation" method="_on_play_button_down"]

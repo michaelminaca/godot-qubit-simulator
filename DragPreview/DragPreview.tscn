@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8yce5naviyyw"]
+
+[ext_resource type="Texture2D" uid="uid://cxxd0411wrdbm" path="res://Assets/QuantumGateTextures/x_gate/x_gate_default.png" id="1_5ph3j"]
+[ext_resource type="Script" path="res://DragPreview/DragPreview.gd" id="2_gs2bg"]
+
+[node name="DragPreview" type="TextureRect"]
+custom_minimum_size = Vector2(80, 80)
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_5ph3j")
+expand_mode = 1
+script = ExtResource("2_gs2bg")

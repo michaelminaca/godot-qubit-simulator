@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckn0n26pban0e"]
+
+[ext_resource type="Script" path="res://UIHandlers/QuantumGateSlot.gd" id="1_ji8ct"]
+[ext_resource type="Texture2D" uid="uid://bwk1ythcphh4u" path="res://Assets/QuantumGateTextures/free_slot.png" id="1_ysw56"]
+[ext_resource type="Texture2D" uid="uid://egdqnue4cfc" path="res://Assets/QuantumGateTextures/DeleteButtonOverlay.png" id="3_iswrf"]
+
+[node name="GateSlot" type="TextureRect"]
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.06, 0.06)
+size_flags_horizontal = 4
+texture = ExtResource("1_ysw56")
+script = ExtResource("1_ji8ct")
+
+[node name="DeleteButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HoverOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.2)
+
+[node name="DeleteIcon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 33.3333
+offset_top = 33.3333
+offset_right = 466.333
+offset_bottom = 466.333
+mouse_filter = 2
+texture = ExtResource("3_iswrf")
+expand_mode = 1
+
+[node name="PlayingOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 450.0
+offset_right = 490.0
+offset_bottom = 490.0
+color = Color(0.745098, 0.745098, 0, 1)
+
+[connection signal="button_down" from="DeleteButton" to="." method="_on_delete_button_down"]

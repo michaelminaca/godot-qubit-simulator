@@ -1,0 +1,483 @@
+[gd_scene load_steps=43 format=3 uid="uid://cyg3jgtgkjr8t"]
+
+[ext_resource type="Script" path="res://UIHandlers/CameraController.gd" id="1_6bdfq"]
+[ext_resource type="Script" path="res://SingleQubitScripts/QubitDragRotation.gd" id="1_7pxk7"]
+[ext_resource type="Material" uid="uid://d2l8a26xoi2la" path="res://Materials/Standard_Unshaded_Yellow.tres" id="1_vgadw"]
+[ext_resource type="Script" path="res://UIHandlers/DraggableQuantumGate.gd" id="2_ds8xk"]
+[ext_resource type="Script" path="res://SingleQubitScripts/HandleArrowRotation.gd" id="3_mxj6e"]
+[ext_resource type="Script" path="res://UIHandlers/HandleNoOfSlots.gd" id="5_508gu"]
+[ext_resource type="Material" uid="uid://14venn6gfrkt" path="res://Materials/axis_color.tres" id="5_ocp7a"]
+[ext_resource type="PackedScene" uid="uid://ckn0n26pban0e" path="res://ChildScenes/QuantumGateSlot.tscn" id="6_hnefa"]
+[ext_resource type="Texture2D" uid="uid://bjn8ctrxisgko" path="res://Assets/QubitLabels/0_vector.svg" id="6_iqwea"]
+[ext_resource type="Texture2D" uid="uid://cxxd0411wrdbm" path="res://Assets/QuantumGateTextures/x_gate.png" id="7_jc18t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k0wna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf3om"]
+shading_mode = 0
+albedo_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_70rin"]
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueewv"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gdhj1"]
+radius = 0.075
+height = 0.001
+is_hemisphere = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_24ux0"]
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcj1n"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fikmp"]
+flip_faces = true
+top_radius = 0.0
+bottom_radius = 0.06
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1q2lb"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yngha"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_idf7s"]
+flip_faces = true
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8mkv"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h4x74"]
+radius = 0.025
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5l3g"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_um8c4"]
+flip_faces = true
+radius = 0.035
+height = 0.07
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvki0"]
+shading_mode = 0
+albedo_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1o6rl"]
+height = 0.002
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oat4g"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_16k3n"]
+flip_faces = true
+radius = 0.51
+height = 1.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpt4f"]
+shading_mode = 0
+albedo_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_go6j5"]
+radius = 0.15
+height = 0.001
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2n8e6"]
+shading_mode = 0
+albedo_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_estxq"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.565
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ejgqk"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.565
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oqet"]
+shading_mode = 0
+albedo_color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5c5q"]
+albedo_color = Color(0.431373, 0.282353, 0.337255, 0)
+albedo_texture = ExtResource("6_iqwea")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_uaos7"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiat6"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_om30w"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aflgn"]
+
+[sub_resource type="Sky" id="Sky_8jsgn"]
+sky_material = SubResource("ShaderMaterial_aflgn")
+
+[sub_resource type="Environment" id="Environment_02fnt"]
+background_mode = 1
+background_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+background_energy_multiplier = 5.72
+sky = SubResource("Sky_8jsgn")
+
+[node name="Node" type="Node"]
+
+[node name="SingleQubit" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("1_7pxk7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SingleQubit"]
+shape = SubResource("SphereShape3D_k0wna")
+
+[node name="OuterSphere" type="MeshInstance3D" parent="SingleQubit"]
+material_override = SubResource("StandardMaterial3D_uf3om")
+mesh = SubResource("SphereMesh_70rin")
+
+[node name="ArrowRotation" type="Node3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(-0.281193, -0.865425, -0.414693, 0.415768, 0.279602, -0.865425, 0.864909, -0.415768, 0.281194, 0, 0, 0)
+rotation_order = 0
+script = ExtResource("3_mxj6e")
+
+[node name="ArrowHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48186, 0)
+material_override = SubResource("StandardMaterial3D_ueewv")
+transparency = 0.99
+mesh = SubResource("SphereMesh_gdhj1")
+skeleton = NodePath("../..")
+
+[node name="ArrowTip" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435241, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_24ux0")
+
+[node name="ArrowTipBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438043, 0)
+material_override = SubResource("StandardMaterial3D_hcj1n")
+mesh = SubResource("CylinderMesh_fikmp")
+
+[node name="ArrowBody" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_1q2lb")
+
+[node name="ArrowBodyBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210009, 0)
+material_override = SubResource("StandardMaterial3D_yngha")
+mesh = SubResource("CylinderMesh_idf7s")
+
+[node name="ArrowBall" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+top_level = true
+material_override = SubResource("StandardMaterial3D_c8mkv")
+mesh = SubResource("SphereMesh_h4x74")
+
+[node name="ArrowBallBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+top_level = true
+material_override = SubResource("StandardMaterial3D_c5l3g")
+mesh = SubResource("SphereMesh_um8c4")
+
+[node name="MiddleRing" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+material_override = SubResource("StandardMaterial3D_dvki0")
+transparency = 0.99
+mesh = SubResource("CylinderMesh_1o6rl")
+
+[node name="OuterSphereBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+material_override = SubResource("StandardMaterial3D_oat4g")
+mesh = SubResource("SphereMesh_16k3n")
+skeleton = NodePath("../..")
+
+[node name="TopHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48186, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_fpt4f")
+transparency = 0.9
+mesh = SubResource("SphereMesh_go6j5")
+
+[node name="BottomHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.482, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_2n8e6")
+transparency = 0.98
+mesh = SubResource("SphereMesh_go6j5")
+
+[node name="Axis" type="Node3D" parent="SingleQubit"]
+
+[node name="X_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.318)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="X_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.318)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="Y_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.318, 0, 0)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_ejgqk")
+
+[node name="Y_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.318, 0, 0)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_ejgqk")
+
+[node name="Z_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.318, 0)
+material_override = SubResource("StandardMaterial3D_4oqet")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SingleQubit/Axis/Z_Axis_Pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_f5c5q")
+mesh = SubResource("QuadMesh_uaos7")
+
+[node name="Z_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.318, 0)
+material_override = SubResource("StandardMaterial3D_4oqet")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Timeline" type="Panel" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="Button" parent="UserInterface/Timeline"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -31.0
+offset_right = 61.0
+text = "Play"
+
+[node name="TimelineSlotsContainer" type="HBoxContainer" parent="UserInterface/Timeline"]
+layout_direction = 2
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_508gu")
+
+[node name="GateSlot" parent="UserInterface/Timeline/TimelineSlotsContainer" instance=ExtResource("6_hnefa")]
+layout_mode = 2
+populated = true
+y_rot = 180.0
+
+[node name="QuantumGatesMenu" type="ScrollContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_bottom = -83.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eiat6")
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UserInterface/QuantumGatesMenu"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="X_Gate" type="TextureRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_jc18t")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+z_rot = 180.0
+
+[node name="Y_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 0.156863, 1, 1)
+script = ExtResource("2_ds8xk")
+x_rot = 180.0
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/Y_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="Z_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 0.223529, 1)
+script = ExtResource("2_ds8xk")
+y_rot = 180.0
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/Z_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Z_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="H_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/H_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "H_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="S_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/S_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "S_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="T_Gate" type="ColorRect" parent="UserInterface/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("2_ds8xk")
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesMenu/HFlowContainer/T_Gate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "T_Gate"
+label_settings = SubResource("LabelSettings_om30w")
+
+[node name="QubitInformation" type="Panel" parent="UserInterface"]
+layout_mode = 1
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 307.0
+offset_bottom = 425.0
+
+[node name="QubitEquation" type="RichTextLabel" parent="UserInterface/QubitInformation"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = -6.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Qubit Equation: "
+
+[node name="QubitProbabilitiesContainer" type="Panel" parent="UserInterface/QubitInformation"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 9.0
+offset_top = 77.0
+offset_right = -8.0
+offset_bottom = 392.0
+grow_horizontal = 2
+
+[node name="ProbabilitiesLabel" type="RichTextLabel" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Probabilites"
+
+[node name="CameraGimbal" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1, 1)
+environment = SubResource("Environment_02fnt")
+script = ExtResource("1_6bdfq")
+
+[connection signal="mouse_entered" from="SingleQubit" to="SingleQubit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SingleQubit" to="SingleQubit" method="_on_mouse_exited"]
+[connection signal="button_down" from="UserInterface/Timeline/PlayButton" to="SingleQubit/OuterSphere/ArrowRotation" method="_on_play_button_down"]

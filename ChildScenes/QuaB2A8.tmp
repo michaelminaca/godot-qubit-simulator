@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckn0n26pban0e"]
+
+[ext_resource type="Script" path="res://UIHandlers/QuantumGateSlot.gd" id="1_ji8ct"]
+[ext_resource type="Texture2D" uid="uid://bwk1ythcphh4u" path="res://Assets/QuantumGateTextures/free_slot.png" id="1_ysw56"]
+
+[node name="GateSlot" type="TextureRect"]
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.06, 0.06)
+size_flags_horizontal = 4
+texture = ExtResource("1_ysw56")
+script = ExtResource("1_ji8ct")
+
+[node name="DeleteButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[connection signal="button_down" from="DeleteButton" to="." method="_on_delete_button_down"]

@@ -1,0 +1,1990 @@
+[gd_scene load_steps=92 format=3 uid="uid://cyg3jgtgkjr8t"]
+
+[ext_resource type="Script" path="res://UIHandlers/CameraController.gd" id="1_6bdfq"]
+[ext_resource type="Script" path="res://SingleQubitScripts/QubitDragRotation.gd" id="1_7pxk7"]
+[ext_resource type="Material" uid="uid://d2l8a26xoi2la" path="res://Materials/Standard_Unshaded_Yellow.tres" id="1_vgadw"]
+[ext_resource type="Script" path="res://UIHandlers/DraggableQuantumGate.gd" id="2_ds8xk"]
+[ext_resource type="Script" path="res://SingleQubitScripts/HandleArrowRotation.gd" id="3_mxj6e"]
+[ext_resource type="Script" path="res://UIHandlers/HandleNoOfSlots.gd" id="5_508gu"]
+[ext_resource type="Material" uid="uid://14venn6gfrkt" path="res://Materials/axis_color.tres" id="5_ocp7a"]
+[ext_resource type="Script" path="res://SingleQubitScripts/Timeline.gd" id="6_2jjqi"]
+[ext_resource type="StyleBox" uid="uid://dfobh16idu1qo" path="res://Materials/StandardPanel.tres" id="6_dvdl6"]
+[ext_resource type="PackedScene" uid="uid://ckn0n26pban0e" path="res://ChildScenes/QuantumGateSlot.tscn" id="6_hnefa"]
+[ext_resource type="Texture2D" uid="uid://bjn8ctrxisgko" path="res://Assets/QubitLabels/0_vector.svg" id="6_iqwea"]
+[ext_resource type="Script" path="res://SingleQubitScripts/QubitResetMenu.gd" id="7_04lel"]
+[ext_resource type="Texture2D" uid="uid://cxxd0411wrdbm" path="res://Assets/QuantumGateTextures/x_gate/x_gate_default.png" id="7_jc18t"]
+[ext_resource type="Texture2D" uid="uid://l2yropt2eh2q" path="res://Assets/UI/qe1.png" id="7_pnuvu"]
+[ext_resource type="Texture2D" uid="uid://pevwesy04xvw" path="res://Assets/UI/iKet.png" id="8_4m5ss"]
+[ext_resource type="Texture2D" uid="uid://codibjxcw5gv" path="res://Assets/UI/zeroKet.png" id="8_oghkn"]
+[ext_resource type="Texture2D" uid="uid://n775j53fg0is" path="res://Assets/UI/qe2.png" id="8_tqygg"]
+[ext_resource type="Texture2D" uid="uid://dflk1sdrn2pi5" path="res://Assets/UI/NegiKet.png" id="9_2lwma"]
+[ext_resource type="Texture2D" uid="uid://5m7qgsfrqegm" path="res://Assets/UI/oneKet.png" id="9_jtkqr"]
+[ext_resource type="Texture2D" uid="uid://1dda8rrheqnh" path="res://Assets/QuantumGateTextures/y_gate.png" id="10_418wp"]
+[ext_resource type="Texture2D" uid="uid://vq0un02753c5" path="res://Assets/UI/minusKet.png" id="10_lyov7"]
+[ext_resource type="Texture2D" uid="uid://dhb3usuiqj0io" path="res://Assets/UI/qe3.png" id="11_3cx5x"]
+[ext_resource type="Texture2D" uid="uid://hm0ou11d34lk" path="res://Assets/UI/plusKet.png" id="11_ccnvw"]
+[ext_resource type="Texture2D" uid="uid://b8x646yekmhu6" path="res://Assets/QuantumGateTextures/z_gate.png" id="11_ls57r"]
+[ext_resource type="Texture2D" uid="uid://qtcyjwwa46ne" path="res://Assets/QuantumGateTextures/h_gate.png" id="12_k5pgq"]
+[ext_resource type="Texture2D" uid="uid://dlc1f04ae4dmr" path="res://Assets/UI/arrow.png" id="13_86sqm"]
+[ext_resource type="Texture2D" uid="uid://cmb3ilfypxc32" path="res://Assets/UI/phaselabel.png" id="13_hn7j6"]
+[ext_resource type="Texture2D" uid="uid://basfhtguhsmji" path="res://Assets/QuantumGateTextures/s_gate.png" id="13_lhlxr"]
+[ext_resource type="Texture2D" uid="uid://c72havjq5tex4" path="res://Assets/UI/pi.png" id="14_ho3yw"]
+[ext_resource type="Texture2D" uid="uid://caf541rcqr78o" path="res://Assets/QuantumGateTextures/t_gate.png" id="14_npwqy"]
+[ext_resource type="FontFile" uid="uid://d0nq1v1sywjxw" path="res://Assets/Fonts/lmroman9-regular.otf" id="15_2jkqm"]
+[ext_resource type="Script" path="res://SingleQubitScripts/QubitInformation.gd" id="15_ggp2p"]
+[ext_resource type="Texture2D" uid="uid://bufls8hw7uwwq" path="res://Assets/UI/pi2.png" id="17_1ddpu"]
+[ext_resource type="Texture2D" uid="uid://ijoif4heytqj" path="res://Assets/UI/pi_white.png" id="18_kxg7j"]
+[ext_resource type="Texture2D" uid="uid://de60e00wh5ek0" path="res://Assets/UI/3pi2.png" id="19_uo2cw"]
+[ext_resource type="Texture2D" uid="uid://dabev138c0wwn" path="res://Assets/UI/zero.png" id="20_5babi"]
+[ext_resource type="Script" path="res://SingleQubitScripts/SetQubitUI.gd" id="20_pe40a"]
+[ext_resource type="Texture2D" uid="uid://crsq03v2s83kg" path="res://Assets/UI/psi.png" id="31_08tm8"]
+[ext_resource type="Texture2D" uid="uid://c3ern0n8a7vwg" path="res://Assets/UI/playButton.png" id="35_p7j0j"]
+[ext_resource type="Texture2D" uid="uid://bne2g0ixer40o" path="res://Assets/UI/cancelNormal.png" id="36_cdeed"]
+[ext_resource type="Texture2D" uid="uid://by5vgqrtqxaqk" path="res://Assets/UI/cancelDisabled.png" id="37_bhcp8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k0wna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf3om"]
+shading_mode = 0
+albedo_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_70rin"]
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueewv"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gdhj1"]
+radius = 0.075
+height = 0.001
+is_hemisphere = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_24ux0"]
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcj1n"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fikmp"]
+flip_faces = true
+top_radius = 0.0
+bottom_radius = 0.055
+height = 0.11
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1q2lb"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yngha"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_idf7s"]
+flip_faces = true
+top_radius = 0.015
+bottom_radius = 0.016
+height = 0.376
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8mkv"]
+shading_mode = 0
+albedo_color = Color(0.960784, 0.701961, 0.00392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h4x74"]
+radius = 0.025
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5l3g"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_um8c4"]
+flip_faces = true
+radius = 0.03
+height = 0.062
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6st4"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvki0"]
+shading_mode = 0
+albedo_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1o6rl"]
+height = 0.002
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oat4g"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_16k3n"]
+flip_faces = true
+radius = 0.505
+height = 1.005
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpt4f"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="SphereMesh" id="SphereMesh_go6j5"]
+radius = 0.15
+height = 0.001
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2n8e6"]
+shading_mode = 0
+albedo_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_p6nx6"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrtev"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("8_oghkn")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_84ip3"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3iqg"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("9_jtkqr")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_a6d6v"]
+size = Vector2(0.13, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkkow"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("11_ccnvw")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_8040k"]
+size = Vector2(0.13, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55xq7"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("10_lyov7")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_om743"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwrlw"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("8_4m5ss")
+billboard_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a05hl"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("9_2lwma")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_m613e"]
+size = Vector2(0.15, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_estxq"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.565
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ejgqk"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.565
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oqet"]
+shading_mode = 0
+albedo_color = Color(0.345098, 0.345098, 0.345098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5c5q"]
+albedo_color = Color(0.431373, 0.282353, 0.337255, 0)
+albedo_texture = ExtResource("6_iqwea")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_uaos7"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yae0m"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my4os"]
+bg_color = Color(0.14902, 0.14902, 0.14902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfi12"]
+bg_color = Color(0.960784, 0.701961, 0.00392157, 1)
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv542"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmodt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbmej"]
+bg_color = Color(0.14902, 0.14902, 0.14902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_d8vtk"]
+color = Color(1, 1, 1, 0.482353)
+thickness = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aflgn"]
+
+[sub_resource type="Sky" id="Sky_8jsgn"]
+sky_material = SubResource("ShaderMaterial_aflgn")
+
+[sub_resource type="Environment" id="Environment_02fnt"]
+background_mode = 1
+background_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+sky = SubResource("Sky_8jsgn")
+
+[node name="Node" type="Node"]
+
+[node name="SingleQubit" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+gravity_scale = 0.0
+script = ExtResource("1_7pxk7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SingleQubit"]
+shape = SubResource("SphereShape3D_k0wna")
+
+[node name="OuterSphere" type="MeshInstance3D" parent="SingleQubit"]
+material_override = SubResource("StandardMaterial3D_uf3om")
+mesh = SubResource("SphereMesh_70rin")
+
+[node name="ArrowRotation" type="Node3D" parent="SingleQubit/OuterSphere"]
+script = ExtResource("3_mxj6e")
+
+[node name="Node3D" type="Node3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="ArrowHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48186, 0)
+material_override = SubResource("StandardMaterial3D_ueewv")
+transparency = 0.99
+mesh = SubResource("SphereMesh_gdhj1")
+skeleton = NodePath("../../..")
+
+[node name="ArrowTip" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435241, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_24ux0")
+skeleton = NodePath("../..")
+
+[node name="ArrowTipBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438, 0)
+material_override = SubResource("StandardMaterial3D_hcj1n")
+mesh = SubResource("CylinderMesh_fikmp")
+skeleton = NodePath("../..")
+
+[node name="ArrowBody" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = ExtResource("1_vgadw")
+mesh = SubResource("CylinderMesh_1q2lb")
+skeleton = NodePath("../..")
+
+[node name="ArrowBodyBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210009, 0)
+material_override = SubResource("StandardMaterial3D_yngha")
+mesh = SubResource("CylinderMesh_idf7s")
+skeleton = NodePath("../..")
+
+[node name="ArrowBall" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+top_level = true
+material_override = SubResource("StandardMaterial3D_c8mkv")
+mesh = SubResource("SphereMesh_h4x74")
+skeleton = NodePath("../..")
+
+[node name="ArrowBallBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere/ArrowRotation/Node3D"]
+top_level = true
+material_override = SubResource("StandardMaterial3D_c5l3g")
+mesh = SubResource("SphereMesh_um8c4")
+skeleton = NodePath("../..")
+
+[node name="ArrowTipPositionNode" type="CSGBox3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_w6st4")
+snap = 0.0001
+size = Vector3(0.025, 0.025, 0.025)
+
+[node name="MiddleRing" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+material_override = SubResource("StandardMaterial3D_dvki0")
+transparency = 0.99
+mesh = SubResource("CylinderMesh_1o6rl")
+
+[node name="OuterSphereBorder" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+material_override = SubResource("StandardMaterial3D_oat4g")
+mesh = SubResource("SphereMesh_16k3n")
+skeleton = NodePath("../..")
+
+[node name="TopHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48186, 0)
+material_override = SubResource("StandardMaterial3D_fpt4f")
+transparency = 0.9
+mesh = SubResource("SphereMesh_go6j5")
+
+[node name="BottomHemisphere" type="MeshInstance3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.482, 0)
+material_override = SubResource("StandardMaterial3D_2n8e6")
+transparency = 0.98
+mesh = SubResource("SphereMesh_go6j5")
+
+[node name="AxisLabels" type="Node3D" parent="SingleQubit/OuterSphere"]
+
+[node name="ZeroKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.7, 0)
+mesh = SubResource("QuadMesh_p6nx6")
+surface_material_override/0 = SubResource("StandardMaterial3D_rrtev")
+
+[node name="OneKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.7, 0)
+mesh = SubResource("QuadMesh_84ip3")
+surface_material_override/0 = SubResource("StandardMaterial3D_u3iqg")
+
+[node name="PlusKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0.7)
+mesh = SubResource("QuadMesh_a6d6v")
+surface_material_override/0 = SubResource("StandardMaterial3D_nkkow")
+
+[node name="MinusKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, -0.7)
+mesh = SubResource("QuadMesh_8040k")
+surface_material_override/0 = SubResource("StandardMaterial3D_55xq7")
+
+[node name="iKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.7, 0, 0)
+mesh = SubResource("QuadMesh_om743")
+surface_material_override/0 = SubResource("StandardMaterial3D_nwrlw")
+
+[node name="NegiKetLabel" type="MeshInstance3D" parent="SingleQubit/OuterSphere/AxisLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0)
+material_override = SubResource("StandardMaterial3D_a05hl")
+mesh = SubResource("QuadMesh_m613e")
+
+[node name="Axis" type="Node3D" parent="SingleQubit"]
+
+[node name="X_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.318)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="X_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.318)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="Y_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.318, 0, 0)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_ejgqk")
+
+[node name="Y_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.318, 0, 0)
+material_override = ExtResource("5_ocp7a")
+mesh = SubResource("CylinderMesh_ejgqk")
+
+[node name="Z_Axis_Pos" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.318, 0)
+material_override = SubResource("StandardMaterial3D_4oqet")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SingleQubit/Axis/Z_Axis_Pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_f5c5q")
+mesh = SubResource("QuadMesh_uaos7")
+
+[node name="Z_Axis_Neg" type="MeshInstance3D" parent="SingleQubit/Axis"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.318, 0)
+material_override = SubResource("StandardMaterial3D_4oqet")
+mesh = SubResource("CylinderMesh_estxq")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="QubitEquationSection" type="Panel" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.0
+offset_top = 20.0
+offset_right = 268.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yae0m")
+
+[node name="QubitEquation1" type="TextureRect" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -20.0
+offset_right = -173.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pnuvu")
+expand_mode = 1
+
+[node name="QubitEquation2" type="TextureRect" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -20.0
+offset_right = 5.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_tqygg")
+expand_mode = 1
+
+[node name="QubitEquation3" type="TextureRect" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -24.0
+offset_right = 43.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_hn7j6")
+expand_mode = 1
+
+[node name="QubitEquation4" type="TextureRect" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.0
+offset_top = -18.0
+offset_right = 116.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_ho3yw")
+expand_mode = 1
+
+[node name="QubitEquation5" type="TextureRect" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 226.0
+offset_top = -20.0
+offset_right = 264.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_3cx5x")
+expand_mode = 1
+
+[node name="ZeroAmplitudeLabel" type="Label" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -32.0
+offset_right = -71.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.960784, 0.701961, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("15_2jkqm")
+theme_override_font_sizes/font_size = 40
+text = "0.000"
+horizontal_alignment = 1
+
+[node name="OneAmplitudeLabel" type="Label" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -32.0
+offset_right = 219.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.960784, 0.701961, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("15_2jkqm")
+theme_override_font_sizes/font_size = 40
+text = "0.000"
+horizontal_alignment = 1
+
+[node name="PhaseAmplitudeLabel" type="Label" parent="UserInterface/QubitEquationSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -32.0
+offset_right = 99.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.960784, 0.701961, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("15_2jkqm")
+theme_override_font_sizes/font_size = 24
+text = "0.000"
+horizontal_alignment = 1
+
+[node name="QubitResetMenu" type="Panel" parent="UserInterface"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 72.0
+theme_override_styles/panel = ExtResource("6_dvdl6")
+script = ExtResource("7_04lel")
+
+[node name="SetQubitLabel" type="RichTextLabel" parent="UserInterface/QubitResetMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.0
+offset_top = 13.0
+offset_right = -48.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Set Qubit:"
+
+[node name="SetZeroQubit" type="TextureButton" parent="UserInterface/QubitResetMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 14.0
+offset_right = -104.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("8_oghkn")
+script = ExtResource("20_pe40a")
+
+[node name="HoverOverlay" type="ColorRect" parent="UserInterface/QubitResetMenu/SetZeroQubit"]
+layout_mode = 0
+offset_left = -13.8571
+offset_top = -11.0
+offset_right = 88.1429
+offset_bottom = 92.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0588235)
+
+[node name="SetOneQubit" type="TextureButton" parent="UserInterface/QubitResetMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = 14.0
+offset_right = -63.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("9_jtkqr")
+script = ExtResource("20_pe40a")
+
+[node name="HoverOverlay" type="ColorRect" parent="UserInterface/QubitResetMenu/SetOneQubit"]
+layout_mode = 0
+offset_left = -13.8571
+offset_top = -11.0
+offset_right = 88.1429
+offset_bottom = 92.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0588235)
+
+[node name="SetMinusQubit" type="TextureButton" parent="UserInterface/QubitResetMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.5
+offset_top = 14.0
+offset_right = 49.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("10_lyov7")
+script = ExtResource("20_pe40a")
+
+[node name="HoverOverlay" type="ColorRect" parent="UserInterface/QubitResetMenu/SetMinusQubit"]
+layout_mode = 0
+offset_left = -9.85712
+offset_top = -11.0
+offset_right = 109.143
+offset_bottom = 92.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0588235)
+
+[node name="SetPlusQubit" type="TextureButton" parent="UserInterface/QubitResetMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 201.5
+offset_top = 14.0
+offset_right = 0.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("11_ccnvw")
+script = ExtResource("20_pe40a")
+
+[node name="HoverOverlay" type="ColorRect" parent="UserInterface/QubitResetMenu/SetPlusQubit"]
+layout_mode = 0
+offset_left = -6.85712
+offset_top = -11.0
+offset_right = 107.143
+offset_bottom = 92.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0588235)
+
+[node name="QubitInformation" type="Panel" parent="UserInterface"]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 336.0
+offset_bottom = 592.0
+theme_override_styles/panel = ExtResource("6_dvdl6")
+script = ExtResource("15_ggp2p")
+
+[node name="QubitProbabilitiesContainer" type="Panel" parent="UserInterface/QubitInformation"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 280.0
+grow_horizontal = 2
+
+[node name="ProbabilitiesLabel" type="RichTextLabel" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_right = 61.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Probabilites"
+
+[node name="ProbabilitiesGraph" type="Control" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 32.0
+offset_right = -20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DottedLinesBottom" type="Control" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 93.0
+offset_right = 71.0
+offset_bottom = 133.0
+
+[node name="Dash1" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 11.0
+offset_right = 39.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash2" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash3" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 11.0
+offset_right = 63.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash4" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 11.0
+offset_right = 75.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash5" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 11.0
+offset_right = 87.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash6" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 11.0
+offset_right = 99.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash7" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 11.0
+offset_right = 111.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash8" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 11.0
+offset_right = 123.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash9" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 11.0
+offset_right = 135.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash10" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 11.0
+offset_right = 147.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash11" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 11.0
+offset_right = 159.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash12" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 11.0
+offset_right = 171.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash13" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 11.0
+offset_right = 183.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash14" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 11.0
+offset_right = 195.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash15" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesBottom"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 11.0
+offset_right = 207.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="DottedLinesTop" type="Control" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 13.0
+offset_right = 71.0
+offset_bottom = 53.0
+
+[node name="Dash1" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 11.0
+offset_right = 39.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash2" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash3" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 11.0
+offset_right = 63.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash4" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 11.0
+offset_right = 75.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash5" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 11.0
+offset_right = 87.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash6" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 11.0
+offset_right = 99.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash7" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 11.0
+offset_right = 111.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash8" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 11.0
+offset_right = 123.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash9" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 11.0
+offset_right = 135.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash10" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 11.0
+offset_right = 147.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash11" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 11.0
+offset_right = 159.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash12" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 11.0
+offset_right = 171.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash13" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 11.0
+offset_right = 183.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash14" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 11.0
+offset_right = 195.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="Dash15" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph/DottedLinesTop"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 11.0
+offset_right = 207.0
+offset_bottom = 14.0
+color = Color(0.231373, 0.247059, 0.27451, 1)
+
+[node name="ZeroProbabilityRect" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 184.0
+offset_right = -104.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.960784, 0.701961, 0.00392157, 1)
+
+[node name="OneProbabilityRect" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = 184.0
+offset_right = -16.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.960784, 0.701961, 0.00392157, 1)
+
+[node name="ZeroProbabilityLabel" type="Label" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = 160.0
+offset_right = -120.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0.00"
+
+[node name="OneProbabilityLabel" type="Label" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 160.0
+offset_right = -32.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0.00"
+
+[node name="GraphAxisLeft" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 24.0
+offset_right = -194.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphAxisBottom" type="ColorRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 184.0
+offset_right = -16.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AxisLabelOne" type="Label" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 13.0
+offset_right = -202.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+
+[node name="AxisLabelOne2" type="Label" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 172.0
+offset_right = -202.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+
+[node name="AxisLabelHalf" type="Label" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 93.0
+offset_right = -202.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0.5"
+
+[node name="ZeroKet" type="TextureRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 108.0
+offset_top = 196.0
+offset_right = -124.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_oghkn")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/QubitInformation/QubitProbabilitiesContainer/ProbabilitiesGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 196.0
+offset_top = 196.0
+offset_right = -36.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_jtkqr")
+expand_mode = 1
+
+[node name="QubitPhaseContainer" type="Panel" parent="UserInterface/QubitInformation"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -208.0
+offset_right = -16.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RelativePhaseTitle" type="RichTextLabel" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Relative Phase"
+
+[node name="Panel" type="Panel" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 72.0
+offset_right = -168.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_my4os")
+
+[node name="Dashes" type="Control" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HD1" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -37.0
+offset_right = -29.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD2" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -37.0
+offset_right = -21.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD3" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -37.0
+offset_right = -13.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD4" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -37.0
+offset_right = -5.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD5" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD6" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -37.0
+offset_right = 17.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD7" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -37.0
+offset_right = 25.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD8" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -37.0
+offset_right = 33.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD9" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -37.0
+offset_right = -29.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD17" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -44.0
+offset_right = 1.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD21" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -32.0
+offset_right = 1.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD22" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -32.0
+offset_right = 1.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD23" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -24.0
+offset_right = 1.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD24" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD25" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -8.0
+offset_right = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD18" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -52.0
+offset_right = 1.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD19" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -60.0
+offset_right = 1.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD20" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -68.0
+offset_right = 1.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD10" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -37.0
+offset_right = -21.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD11" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -37.0
+offset_right = -13.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD12" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -37.0
+offset_right = -5.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD13" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD14" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -37.0
+offset_right = 17.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD15" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -37.0
+offset_right = 25.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="HD16" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/Dashes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -37.0
+offset_right = 33.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="PhaseRotation" type="Control" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(36, 0)
+
+[node name="ArrowBody" type="ColorRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/PhaseRotation"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.0
+offset_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+pivot_offset = Vector2(3.025, 0)
+color = Color(0.960784, 0.701961, 0.00392157, 1)
+
+[node name="Panel" type="Panel" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/PhaseRotation"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gfi12")
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer/Panel/PhaseRotation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -15.0
+offset_right = 7.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_86sqm")
+expand_mode = 1
+
+[node name="e^i" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -19.0
+offset_right = 49.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_hn7j6")
+expand_mode = 1
+
+[node name="pi" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = -13.0
+offset_right = 129.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_ho3yw")
+expand_mode = 1
+
+[node name="RelativePhaseLabel" type="Label" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -31.0
+offset_right = 109.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.960784, 0.701961, 0.00392157, 1)
+theme_override_fonts/font = ExtResource("15_2jkqm")
+theme_override_font_sizes/font_size = 30
+text = "0.54"
+
+[node name="pi_2" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -6.0
+offset_right = -14.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_1ddpu")
+expand_mode = 1
+
+[node name="pi2" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -37.0
+offset_right = -61.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_kxg7j")
+expand_mode = 1
+
+[node name="3pi_2" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -9.0
+offset_right = -109.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_uo2cw")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UserInterface/QubitInformation/QubitPhaseContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 55.0
+offset_right = -64.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_5babi")
+expand_mode = 1
+
+[node name="QuantumGatesSection" type="Panel" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_bottom = -116.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("6_dvdl6")
+
+[node name="Panel" type="Panel" parent="UserInterface/QuantumGatesSection"]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wv542")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UserInterface/QuantumGatesSection/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Quantum Gates"
+
+[node name="QuantumGatesMenu" type="ScrollContainer" parent="UserInterface/QuantumGatesSection"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = 60.0
+offset_right = -1.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmodt")
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+alignment = 1
+
+[node name="X_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("7_jc18t")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 1.0
+rotation_axis = Vector3(0, 0, -1)
+default_texture = "res://Assets/QuantumGateTextures/x_gate/x_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/x_gate/x_gate_hover.png"
+
+[node name="Y_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("10_418wp")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 1.0
+rotation_axis = Vector3(-1, 0, 0)
+default_texture = "res://Assets/QuantumGateTextures/y_gate/y_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/y_gate/y_gate_hover.png"
+
+[node name="Z_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("11_ls57r")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 1.0
+rotation_axis = Vector3(0, 1, 0)
+default_texture = "res://Assets/QuantumGateTextures/z_gate/z_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/z_gate/z_gate_hover.png"
+
+[node name="H_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("12_k5pgq")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 1.0
+rotation_axis = Vector3(0, 1, -1)
+default_texture = "res://Assets/QuantumGateTextures/h_gate/h_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/h_gate/h_gate_hover.png"
+
+[node name="S_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("13_lhlxr")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 0.5
+rotation_axis = Vector3(0, 1, 0)
+default_texture = "res://Assets/QuantumGateTextures/s_gate/s_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/s_gate/s_gate_hover.png"
+
+[node name="T_Gate" type="TextureRect" parent="UserInterface/QuantumGatesSection/QuantumGatesMenu/HFlowContainer" groups=["q_gate"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("14_npwqy")
+expand_mode = 1
+script = ExtResource("2_ds8xk")
+rotation_radians = 0.25
+rotation_axis = Vector3(0, 1, 0)
+default_texture = "res://Assets/QuantumGateTextures/t_gate/t_gate_default.png"
+hovered_texture = "res://Assets/QuantumGateTextures/t_gate/t_gate_hover.png"
+
+[node name="Timeline" type="Panel" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbmej")
+script = ExtResource("6_2jjqi")
+play_texture_normal = "res://Assets/UI/playButton.png"
+play_texture_playing = "res://Assets/UI/playButtonPlaying.png"
+play_texture_paused = "res://Assets/UI/playButtonPaused.png"
+
+[node name="PsiKetIcon" type="TextureRect" parent="UserInterface/Timeline"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 38.0
+offset_right = 76.0
+offset_bottom = -38.0
+grow_vertical = 2
+texture = ExtResource("31_08tm8")
+expand_mode = 1
+
+[node name="Line" type="Panel" parent="UserInterface/Timeline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 92.0
+offset_top = 58.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_d8vtk")
+
+[node name="TimelineSlotsContainer" type="HBoxContainer" parent="UserInterface/Timeline"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 30.0
+offset_top = 15.0
+offset_right = 530.0
+offset_bottom = 515.0
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(90.515, 7.645)
+theme_override_constants/separation = 50
+script = ExtResource("5_508gu")
+
+[node name="GateSlot" parent="UserInterface/Timeline/TimelineSlotsContainer" instance=ExtResource("6_hnefa")]
+layout_mode = 2
+
+[node name="Playback" type="Panel" parent="UserInterface/Timeline"]
+layout_mode = 0
+offset_top = -38.0
+offset_right = 108.0
+offset_bottom = 2.0
+theme_override_styles/panel = ExtResource("6_dvdl6")
+
+[node name="PlayButton" type="TextureButton" parent="UserInterface/Timeline/Playback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -12.0
+offset_right = 466.0
+offset_bottom = 488.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("35_p7j0j")
+
+[node name="CancelButton" type="TextureButton" parent="UserInterface/Timeline/Playback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -15.0
+offset_right = 508.0
+offset_bottom = 485.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.06, 0.06)
+texture_normal = ExtResource("36_cdeed")
+texture_disabled = ExtResource("37_bhcp8")
+
+[node name="CameraGimbal" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707106, 0, 1, 1)
+environment = SubResource("Environment_02fnt")
+script = ExtResource("1_6bdfq")
+
+[connection signal="mouse_entered" from="SingleQubit" to="SingleQubit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SingleQubit" to="SingleQubit" method="_on_mouse_exited"]
+[connection signal="button_down" from="UserInterface/QubitResetMenu/SetZeroQubit" to="UserInterface/QubitResetMenu" method="_on_set_zero_qubit_button_down"]
+[connection signal="button_down" from="UserInterface/QubitResetMenu/SetOneQubit" to="UserInterface/QubitResetMenu" method="_on_set_one_qubit_button_down"]
+[connection signal="button_down" from="UserInterface/QubitResetMenu/SetMinusQubit" to="UserInterface/QubitResetMenu" method="_on_set_minus_qubit_button_down"]
+[connection signal="button_down" from="UserInterface/QubitResetMenu/SetPlusQubit" to="UserInterface/QubitResetMenu" method="_on_set_plus_qubit_button_down"]
+[connection signal="button_down" from="UserInterface/Timeline/Playback/PlayButton" to="SingleQubit/OuterSphere/ArrowRotation" method="_on_play_button_down"]
+[connection signal="button_down" from="UserInterface/Timeline/Playback/CancelButton" to="SingleQubit/OuterSphere/ArrowRotation" method="_on_cancel_button_button_down"]
