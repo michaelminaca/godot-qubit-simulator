@@ -107,6 +107,7 @@ height = 0.062
 shading_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvki0"]
+depth_draw_mode = 2
 shading_mode = 0
 albedo_color = Color(0.756863, 0.756863, 0.756863, 1)
 
@@ -283,6 +284,7 @@ material_override = SubResource("StandardMaterial3D_uf3om")
 mesh = SubResource("SphereMesh_70rin")
 
 [node name="ArrowRotation" type="Node3D" parent="SingleQubit/OuterSphere"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("3_mxj6e")
 
 [node name="Node3D" type="Node3D" parent="SingleQubit/OuterSphere/ArrowRotation"]
@@ -1847,7 +1849,7 @@ texture = ExtResource("12_k5pgq")
 expand_mode = 1
 script = ExtResource("2_ds8xk")
 rotation_radians = 1.0
-rotation_axis = Vector3(0, 1, -1)
+rotation_axis = Vector3(0, 1, 1)
 default_texture = "res://Assets/QuantumGateTextures/h_gate/h_gate_default.png"
 hovered_texture = "res://Assets/QuantumGateTextures/h_gate/h_gate_hover.png"
 
